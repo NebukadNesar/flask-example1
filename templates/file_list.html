@@ -1,0 +1,40 @@
+<html>
+{% block content %}
+<head>
+    <title>Document Navigator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script type = "text/javascript" 
+         src = "{{ url_for('static', filename = 'javascript.js') }}" ></script>
+</head>
+
+<div id="path">
+{{current_path}}
+</div>
+<div >
+    <form action="/cdout">
+        <input type = "button" onclick = "sayHi()" value = "Say Hi" /> 
+        <input type="submit" name="submit_button" value="Go Back"> 
+    </form>
+
+    <table border = 1>
+        {% for obj in result %}
+           <tr>
+               {% if  obj.dirr %}
+                    <th>
+                        <form action="/cdin"> 
+                        <input type="submit" name="submit_button" value={{ obj.name }}> 
+                        </form> 
+                    </th>
+               {%else%}
+                    <th>
+                        {{ obj.name }}
+                    </th>
+               {%endif%}
+           </tr>
+           
+        {% endfor %}
+     </table>
+
+</div>
+{% endblock %}
+</html>
