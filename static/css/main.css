@@ -1,14 +1,13 @@
-body{
-    background: yellow;
-    position: absolute; 
+body {
+  background: yellow;
+  position: absolute;
 }
 
-
 table th {
-    width: 95%;
+  width: 95%;
 }
 
 #path {
-    font-style: italic;
-    font-size: large;
+  font-style: italic;
+  font-size: large;
 }

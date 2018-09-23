@@ -84,13 +84,14 @@ def format_result(result):
     except Exception:
         excpetion_in = True
 
-    #res_none_dir_items = [i for i in a if not i in b or b.remove(i)]
     if result_temp == None:
         return formatted_result
     for line in result_temp:
         
         file_name = None
         try:
+            ## example string for regex ( "drwxrwxr-x  2 burhanc burhanc 4096 Eyl 22 16:21 local/" )
+            ## regex '\d+:\d+', bulmasını istedigim yer ise örnek stringdeki 16:21 parçası, no such group exception atıyor
             emem = re.search(regex, line)
             file_name = emem[1]
         except Exception as ex:

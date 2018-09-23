@@ -1,40 +1,45 @@
 <html>
 {% block content %}
+
 <head>
     <title>Document Navigator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'javascript.js') }}" ></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'javascript.js') }}"></script>
 </head>
 
 <div id="path">
-{{current_path}}
+    {{current_path}}
 </div>
-<div >
+<div>
     <form action="/cdout">
-        <input type = "button" onclick = "sayHi()" value = "Say Hi" /> 
-        <input type="submit" name="submit_button" value="Go Back"> 
+        <input type="button" onclick="sayHi()" value="Say Hi" />
+        <input type="submit" name="submit_button" value="Go Back">
     </form>
+    <form action="/cdin">
+        <table border=1>
+            {% for obj in result %}
+            <tr>
+                {% if obj.dirr %}
+                <th>
 
-    <table border = 1>
-        {% for obj in result %}
-           <tr>
-               {% if  obj.dirr %}
-                    <th>
-                        <form action="/cdin"> 
-                        <input type="submit" name="submit_button" value={{ obj.name }}> 
-                        </form> 
-                    </th>
-               {%else%}
-                    <th>
-                        {{ obj.name }}
-                    </th>
-               {%endif%}
-           </tr>
-           
-        {% endfor %}
-     </table>
+                    <input type="submit" name="submit_button" value={{ obj.name }}>
 
+                </th>
+                <td>
+                    {{obj.dirr}}
+                </td>
+                {%else%}
+                <th>
+                    {{ obj.name }}
+                </th>
+                <td>
+                    {{obj.dirr}}
+                    {%endif%}
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
 </div>
 {% endblock %}
+
 </html>
