@@ -17,13 +17,17 @@
     </form>
     <form action="/cdin">
         <table border=1>
+            <th>
+                file name
+            </th>
+            <td>
+                is directory?
+            </td>
             {% for obj in result %}
             <tr>
                 {% if obj.dirr %}
                 <th>
-
-                    <input type="submit" name="submit_button" value={{ obj.name }}>
-
+                    <input type="submit" name="submit_button" title={{obj.name}} value={{obj.name}}>
                 </th>
                 <td>
                     {{obj.dirr}}
@@ -35,6 +39,7 @@
                 <td>
                     {{obj.dirr}}
                     {%endif%}
+                </td>
             </tr>
             {% endfor %}
         </table>
